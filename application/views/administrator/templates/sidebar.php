@@ -57,6 +57,12 @@
                 <p>Produk</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?= base_url('admin/ekspedisi'); ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Ekspedisi</p>
+              </a>
+            </li>
           </ul>
         </li>
 

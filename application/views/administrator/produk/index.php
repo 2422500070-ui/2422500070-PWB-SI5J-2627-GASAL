@@ -1,7 +1,9 @@
 <?php
 
 /** @var array $list_produk */ ?>
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -18,16 +20,20 @@
     </div>
   </div>
 
+  <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card-primary card-outline">
+            <div class="card-header border-transparent">
+              <h3 class="card-title font-weight-bold">Daftar Semua Produk</h3>
+            </div>
+            
             <div class="card-body">
-              <h5 class="card-title font-weight-bold d-block mb-3">Semua Produk</h5>
               <div class="mb-3">
                 <a href="<?= base_url('admin/produk/tambah') ?>" class="btn btn-primary">
-                  <i class="fa fa-plus"></i> Produk
+                  <i class="fas fa-plus"></i> Produk
                 </a>
               </div>
 
@@ -35,16 +41,16 @@
                 <?= $this->session->flashdata('message') ?>
               <?php endif ?>
 
-              <table class="table table-striped table-hover">
+              <table class="table table-bordered table-striped table-hover">
                 <thead>
                   <tr>
-                    <th>No</th>
+                    <th style="width: 50px;">No</th>
                     <th>Nama</th>
                     <th>Kategori</th>
                     <th>Harga</th>
                     <th>Stok</th>
                     <th>Deskripsi</th>
-                    <th width="15%">Action</th>
+                    <th style="width: 150px;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -54,7 +60,7 @@
                       <td><?= $no ?></td>
                       <td><?= $produk['pd_nama'] ?></td>
                       <td><?= $produk['kt_nama'] ?></td>
-                      <td>Rp. <?= number_format($produk['harga']) ?></td>
+                      <td>Rp <?= number_format($produk['harga'], 0, ',', '.') ?></td>
                       <td><?= $produk['stok'] ?></td>
                       <td><?= $produk['deskripsi'] ?></td>
                       <td>

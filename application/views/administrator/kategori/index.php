@@ -25,13 +25,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card-primary card-outline">
+            <div class="card-header border-transparent">
+              <h3 class="card-title font-weight-bold">Data Kategori</h3>
+            </div>
+            
             <div class="card-body">
-              <h5 class="card-title font-weight-bold d-block mb-3">Kategori</h5>
-
               <div class="mb-3">
                 <a href="<?= base_url('admin/kategori/tambah') ?>" class="btn btn-primary">
-                  <i class="fa fa-plus"></i> Kategori
+                  <i class="fas fa-plus"></i> Kategori
                 </a>
               </div>
 

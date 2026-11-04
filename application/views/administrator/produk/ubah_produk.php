@@ -25,10 +25,12 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title font-weight-bold">Ubah Data Produk</h3>
+            </div>
+            
             <div class="card-body">
-              <h5 class="card-title font-weight-bold d-block mb-4">Ubah Produk</h5>
-
               <form method="post" enctype="multipart/form-data">
                 <div class="form-group mb-3">
                   <label for="nama_produk">Nama Produk</label>
@@ -65,14 +67,14 @@
                   <input class="form-control-file" type="file" id="gambar_produk" name="gambar_produk[]" multiple>
                 </div>
 
-                <!-- TAMPILKAN GAMBAR PRODUK & TOMBOL HAPUS (Solusi Tugas Modul) -->
+                <!-- TAMPILKAN GAMBAR PRODUK & TOMBOL HAPUS -->
                 <?php $list_gambar = $gambar_model->get_by_produk_id($produk['id_produk']); ?>
                 <?php if (!empty($list_gambar)): ?>
                   <div class="row mb-3">
                     <?php foreach ($list_gambar as $gambar): ?>
                       <div class="col-md-3 mb-2">
                         <div class="card p-2 text-center">
-                          <img src="<?= base_url('uploads/produk/' . $gambar['nama_gambar']) ?>" class="img-thumbnail style=" max-height: 150px; object-fit: cover;">
+                          <img src="<?= base_url('uploads/produk/' . $gambar['nama_gambar']) ?>" class="img-thumbnail" style="max-height: 150px; object-fit: cover;">
                           <a href="<?= base_url('admin/produk/hapus_gambar/' . $gambar['id_gambar'] . '/' . $produk['id_produk']) ?>" class="btn btn-danger btn-sm mt-2" onclick="return confirm('Hapus gambar ini?')">Hapus</a>
                         </div>
                       </div>
