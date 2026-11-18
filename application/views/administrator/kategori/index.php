@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Kategori</h1>
+          <h1 class="m-0">Kategori Laptop</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,7 @@
         <div class="col-lg-12">
           <div class="card card-primary card-outline">
             <div class="card-header border-transparent">
-              <h3 class="card-title font-weight-bold">Data Kategori</h3>
+              <h3 class="card-title font-weight-bold">Data Kategori Laptop</h3>
             </div>
             
             <div class="card-body">
@@ -45,7 +45,7 @@
                 <thead>
                   <tr>
                     <th width="5%">No</th>
-                    <th>Nama</th>
+                    <th>Nama Kategori</th>
                     <th>Deskripsi</th>
                     <th width="15%">Action</th>
                   </tr>
@@ -55,7 +55,7 @@
                   foreach ($list_kategori as $kategori): ?>
                     <tr>
                       <td><?= $no ?></td>
-                      <td><?= $kategori['nama'] ?></td>
+                      <td><?= isset($kategori['nama_kategori']) ? $kategori['nama_kategori'] : (isset($kategori['nama']) ? $kategori['nama'] : '') ?></td>
                       <td><?= $kategori['deskripsi'] ?></td>
                       <td>
                         <a href="<?= base_url('admin/kategori/ubah/' . $kategori['id_kategori']) ?>" class="badge badge-success">Ubah</a>

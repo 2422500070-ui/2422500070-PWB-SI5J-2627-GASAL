@@ -24,7 +24,7 @@ class Produk_controller extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Daftar Produk';
+    $data['title'] = 'Daftar Laptop';
     $data['list_produk'] = $this->produk_model->get_all();
     $this->load->view('administrator/templates/header', $data);
     $this->load->view('administrator/templates/sidebar');
@@ -34,7 +34,7 @@ class Produk_controller extends CI_Controller
 
   public function tambah_produk()
   {
-    $data['title'] = 'Tambah Produk';
+    $data['title'] = 'Tambah Laptop';
     $this->form_validation->set_rules('nama_produk', 'Nama produk', 'required');
     $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required');
 
@@ -52,11 +52,12 @@ class Produk_controller extends CI_Controller
   private function _simpan_produk()
   {
     $data = [
-      'nama'        => ucwords($this->input->post('nama_produk')),
-      'categori_id' => $this->input->post('kategori_produk'),
+      'nama_produk' => ucwords($this->input->post('nama_produk')),
+      'id_kategori' => $this->input->post('kategori_produk'),
       'harga'       => $this->input->post('harga_produk'),
       'stok'        => $this->input->post('stok_produk'),
-      'deskripsi'   => ucfirst($this->input->post('deskripsi_produk'))
+      'berat_kg'    => $this->input->post('berat_produk') ? $this->input->post('berat_produk') : 1.00,
+      'spesifikasi' => ucfirst($this->input->post('deskripsi_produk'))
     ];
 
     $id_produk = $this->produk_model->tambah($data);
@@ -116,7 +117,7 @@ class Produk_controller extends CI_Controller
       $this->form_validation->set_rules('kategori_produk', 'Kategori', 'required');
 
       if ($this->form_validation->run() == FALSE) {
-        $data['title']         = 'Ubah Produk';
+        $data['title']         = 'Ubah Laptop';
         $data['produk']        = $produk;
         $data['list_kategori'] = $this->produk_kategori_model->get_all();
         $data['gambar_model']  = $this->produk_gambar_model;
@@ -142,16 +143,16 @@ class Produk_controller extends CI_Controller
   private function _ubah_produk($id)
   {
     $data = [
-      'nama'        => ucwords($this->input->post('nama_produk')),
-      'categori_id' => $this->input->post('kategori_produk'),
+      'nama_produk' => ucwords($this->input->post('nama_produk')),
+      'id_kategori' => $this->input->post('kategori_produk'),
       'harga'       => $this->input->post('harga_produk'),
       'stok'        => $this->input->post('stok_produk'),
-      'deskripsi'   => ucfirst($this->input->post('deskripsi_produk'))
+      'berat_kg'    => $this->input->post('berat_produk') ? $this->input->post('berat_produk') : 1.00,
+      'spesifikasi' => ucfirst($this->input->post('deskripsi_produk'))
     ];
 
     $this->produk_model->ubah($data, $id);
 
-    // FITUR TAMBAHAN TUGAS: Upload gambar baru saat ubah produk
     if (!empty($_FILES['gambar_produk']['name'][0])) {
       $count = count($_FILES['gambar_produk']['name']);
       $this->_produk_gambar_upload($count, $id);

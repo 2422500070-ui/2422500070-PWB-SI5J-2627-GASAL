@@ -7,9 +7,9 @@ class Produk_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->select('produk.id_produk, produk.nama as pd_nama, produk.stok, produk.deskripsi, produk.harga, kategori.nama as kt_nama');
+        $this->db->select('produk.id_produk, produk.nama_produk as pd_nama, produk.stok, produk.spesifikasi as deskripsi, produk.harga, produk.berat_kg, kategori.nama_kategori as kt_nama');
         $this->db->from($this->_table);
-        $this->db->join('kategori', 'kategori.id_kategori = produk.categori_id');
+        $this->db->join('kategori', 'kategori.id_kategori = produk.id_kategori');
         $query = $this->db->get();
         return $query->result_array();
     }

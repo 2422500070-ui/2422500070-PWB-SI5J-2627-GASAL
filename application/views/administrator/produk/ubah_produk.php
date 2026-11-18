@@ -34,16 +34,18 @@
               <form method="post" enctype="multipart/form-data">
                 <div class="form-group mb-3">
                   <label for="nama_produk">Nama Produk</label>
-                  <input type="text" class="form-control" name="nama_produk" id="nama_produk" value="<?= $produk['nama'] ?>" required>
+                  <input type="text" class="form-control" name="nama_produk" id="nama_produk" value="<?= isset($produk['nama_produk']) ? $produk['nama_produk'] : (isset($produk['nama']) ? $produk['nama'] : '') ?>" required>
                 </div>
 
                 <div class="form-group mb-3">
                   <label for="kategori_produk">Kategori Produk</label>
                   <select class="form-control" name="kategori_produk" id="kategori_produk" required>
                     <option value="">-- Pilih Kategori --</option>
-                    <?php foreach ($list_kategori as $kategori): ?>
-                      <option value="<?= $kategori['id_kategori'] ?>" <?= ($produk['categori_id'] == $kategori['id_kategori']) ? 'selected' : '' ?>>
-                        <?= $kategori['nama'] ?>
+                    <?php 
+                    $selected_kat = isset($produk['id_kategori']) ? $produk['id_kategori'] : (isset($produk['categori_id']) ? $produk['categori_id'] : '');
+                    foreach ($list_kategori as $kategori): ?>
+                      <option value="<?= $kategori['id_kategori'] ?>" <?= ($selected_kat == $kategori['id_kategori']) ? 'selected' : '' ?>>
+                        <?= isset($kategori['nama_kategori']) ? $kategori['nama_kategori'] : (isset($kategori['nama']) ? $kategori['nama'] : '') ?>
                       </option>
                     <?php endforeach ?>
                   </select>
@@ -60,6 +62,11 @@
                 <div class="form-group mb-3">
                   <label for="stok_produk">Stok Produk</label>
                   <input type="number" class="form-control" name="stok_produk" id="stok_produk" value="<?= $produk['stok'] ?>" required>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="berat_produk">Berat Produk (KG)</label>
+                  <input type="number" step="0.01" class="form-control" name="berat_produk" id="berat_produk" value="<?= isset($produk['berat_kg']) ? $produk['berat_kg'] : '1.00' ?>" required>
                 </div>
 
                 <div class="form-group mb-3">
@@ -83,8 +90,8 @@
                 <?php endif ?>
 
                 <div class="form-group mb-3">
-                  <label for="deskripsi_produk">Deskripsi</label>
-                  <textarea name="deskripsi_produk" id="deskripsi_produk" cols="30" rows="5" class="form-control"><?= $produk['deskripsi'] ?></textarea>
+                  <label for="deskripsi_produk">Deskripsi / Spesifikasi</label>
+                  <textarea name="deskripsi_produk" id="deskripsi_produk" cols="30" rows="5" class="form-control"><?= isset($produk['spesifikasi']) ? $produk['spesifikasi'] : (isset($produk['deskripsi']) ? $produk['deskripsi'] : '') ?></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Ubah</button>

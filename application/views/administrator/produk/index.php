@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Produk</h1>
+          <h1 class="m-0">Produk Laptop</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -27,13 +27,13 @@
         <div class="col-lg-12">
           <div class="card card-primary card-outline">
             <div class="card-header border-transparent">
-              <h3 class="card-title font-weight-bold">Daftar Semua Produk</h3>
+              <h3 class="card-title font-weight-bold">Daftar Semua Laptop</h3>
             </div>
             
             <div class="card-body">
               <div class="mb-3">
                 <a href="<?= base_url('admin/produk/tambah') ?>" class="btn btn-primary">
-                  <i class="fas fa-plus"></i> Produk
+                  <i class="fas fa-plus"></i> Tambah Laptop
                 </a>
               </div>
 
@@ -45,10 +45,11 @@
                 <thead>
                   <tr>
                     <th style="width: 50px;">No</th>
-                    <th>Nama</th>
+                    <th>Nama Laptop</th>
                     <th>Kategori</th>
                     <th>Harga</th>
                     <th>Stok</th>
+                    <th>Berat (KG)</th>
                     <th>Deskripsi</th>
                     <th style="width: 150px;">Action</th>
                   </tr>
@@ -62,6 +63,7 @@
                       <td><?= $produk['kt_nama'] ?></td>
                       <td>Rp <?= number_format($produk['harga'], 0, ',', '.') ?></td>
                       <td><?= $produk['stok'] ?></td>
+                      <td><?= isset($produk['berat_kg']) ? $produk['berat_kg'] : '1.00' ?> kg</td>
                       <td><?= $produk['deskripsi'] ?></td>
                       <td>
                         <a href="<?= base_url('admin/produk/ubah/' . $produk['id_produk']) ?>" class="badge badge-success">Ubah</a>

@@ -19,7 +19,7 @@ class Kategori_controller extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Kategori';
+    $data['title'] = 'Kategori Laptop';
     $data['list_kategori'] = $this->produk_kategori_model->get_all();
     $this->load->view('administrator/templates/header', $data);
     $this->load->view('administrator/templates/sidebar');
@@ -29,7 +29,7 @@ class Kategori_controller extends CI_Controller
 
   public function tambah_kategori()
   {
-    $data['title'] = 'Tambah Kategori';
+    $data['title'] = 'Tambah Kategori Laptop';
 
     $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
 
@@ -113,7 +113,7 @@ class Kategori_controller extends CI_Controller
       $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
 
       if ($this->form_validation->run() == FALSE) {
-        $data['title'] = 'Ubah Kategori';
+        $data['title'] = 'Ubah Kategori Laptop';
         $data['kategori'] = $kategori;
         $this->load->view('administrator/templates/header', $data);
         $this->load->view('administrator/templates/sidebar');

@@ -32,7 +32,7 @@
               <form method="post">
                 <div class="form-group mb-3">
                   <label for="nama_kategori">Nama Kategori</label>
-                  <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="<?= $kategori['nama'] ?>" required>
+                  <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" value="<?= isset($kategori['nama_kategori']) ? $kategori['nama_kategori'] : (isset($kategori['nama']) ? $kategori['nama'] : '') ?>" required>
                 </div>
 
                 <div class="form-group mb-3">

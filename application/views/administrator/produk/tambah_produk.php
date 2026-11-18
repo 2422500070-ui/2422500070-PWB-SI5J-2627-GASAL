@@ -34,7 +34,9 @@
                   <select class="form-control" name="kategori_produk" id="kategori_produk" required>
                     <option value="">-- Pilih Kategori --</option>
                     <?php foreach ($list_kategori as $kategori): ?>
-                      <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama'] ?></option>
+                      <option value="<?= $kategori['id_kategori'] ?>">
+                        <?= isset($kategori['nama_kategori']) ? $kategori['nama_kategori'] : (isset($kategori['nama']) ? $kategori['nama'] : '') ?>
+                      </option>
                     <?php endforeach ?>
                   </select>
                   <small class="text-danger"><?= form_error('kategori_produk') ?></small>
@@ -54,12 +56,17 @@
                 </div>
 
                 <div class="form-group mb-3">
+                  <label for="berat_produk">Berat Produk (KG)</label>
+                  <input type="number" step="0.01" class="form-control" name="berat_produk" id="berat_produk" value="1.00" required>
+                </div>
+
+                <div class="form-group mb-3">
                   <label for="gambar_produk">Gambar Produk (Bisa Pilih Banyak)</label>
                   <input class="form-control-file" type="file" id="gambar_produk" name="gambar_produk[]" multiple>
                 </div>
 
                 <div class="form-group mb-3">
-                  <label for="deskripsi_produk">Deskripsi</label>
+                  <label for="deskripsi_produk">Deskripsi / Spesifikasi</label>
                   <textarea name="deskripsi_produk" id="deskripsi_produk" cols="30" rows="5" class="form-control"></textarea>
                 </div>
 
